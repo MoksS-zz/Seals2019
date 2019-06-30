@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+       <!-- Compiled and minified CSS -->
+     <link href="/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
+    
+     <link href="/css/main.css" type="text/css" rel="stylesheet" media="screen,projection" />
+     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:700&display=swap" rel="stylesheet">
+
+    <title>CIBERALEX</title>
+        
+</head>
+<body>
+   <nav class="white" role="navigation">
+    <div class="nav-wrapper container main-page-nav">
+      <div>
+        <a id="logo-container" href="/" class="brand-logo brand-logo__link"><img src="/img/logo-img.png" class="main-page-nav__img" alt="main img logo cyberlexa"><span class="logo-text">CYBERL<span
+              class="logo-text__inner-span">EX</span>A</span></a>
+
+      </div>
+
+      <ul class="right hide-on-med-and-down top-navbar">
+        <li><a  class="navlink" href="#">89287059455</a></li>
+       
+      </ul>
+
+      <ul id="nav-mobile" class="sidenav">
+        <li><a  class="navlink" href="/user-register">SignUp</a></li>
+        <li><a class="navlink" href="/user-login">LogIn</a></li>
+        <li><a href="#">Вход</a></li>
+      </ul>
+      <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+
+    </div>
+  </nav>
+    
+
+    
+<div class="container">
+    <h3 class="title-fish"> Подарки участникам марафона «Бузопасный интернет»</h3>
+
+      <div class="row">
+                <div class="col s12 m6">
+                  <div class="conteiner adv-form">
+                    <div class="row">
+                        <div class="col s12 m4">
+                            <img class="materialboxed" width="120" src="/gameimg/Risunok1.png">
+                        </div>  
+                        <div class="col s12 m4">
+                            <img class="materialboxed" width="120" src="/gameimg/Risunok6.png">
+                        </div>  
+                        <div class="col s12 m4">
+                            <img class="materialboxed" width="120" src="/gameimg/Risunok7.png">
+                        </div>  
+                    </div>
+                         <p>
+                            <h5 class="impact">Займи первое место и получи приз в размере 50000 рублей.</h5> 
+                         </p>
+                  </div>
+                </div>
+                <div class="col s12 m6">
+                    <div class="container adv-form">
+                      <div class="row">
+                        <div class="col s12 m4">
+                            <img class="materialboxed" width="120" height="130"  src="/gameimg/Risunok8.png">
+                        </div>  
+                        <div class="col s12 m4">
+                            <img class="materialboxed"width="120" height="120"  src="/gameimg/Risunok9.png">
+                        </div>  
+                        <div class="col s12 m4">
+                            <img class="materialboxed" width="120" height="120" src="/gameimg/Risunok10.png">
+                        </div>  
+                    </div>
+                        <p>
+                            <h5 class="impact">Пройди все уровни до конца и получи подарок</h5> 
+                         </p>
+                    </div>
+                </div>
+                
+            </div>
+</div>
+   <div class="container reg-form">
+                <div class="row">
+                    <form id="fish"  class="col s12" method="post">
+                    <div class="row">
+                        <div class="input-field col s4">
+                            <i class="material-icons prefix">account_circle</i>
+                            <input id="icon_prefix" type="text" class="validate" name="name">
+                            <label for="icon_prefix">Имя</label>
+                        </div>
+                        <div class="input-field col s4">
+                            <i class="material-icons prefix">child_care</i>
+                            <input id="icon_telephone" type="tel" class="validate" name='surname'>
+                            <label for="icon_telephone">Фамилия</label>
+                        </div>
+                        <div class="input-field col s4">
+                                <i class="material-icons prefix">account_circle</i>
+                                <input id="icon_prefix" type="text" class="validate" name='book'>
+                                <label for="icon_prefix">Рукомендуемые книги</label>
+                        </div>
+                    </div>
+                     <a id="button" class="right waves-effect waves-light btn reg-button modal-trigger">Принять</a>
+                       <!-- Modal Structure -->
+                        <div id="modal1" class="modal">
+                            <div class="modal-content">
+                            <h4>Вы в опасности</h4>
+                            <p>Прямо сейчас вы отправили свои личные данные на удаленный сервер неизвестной организации. Данная ссылка не прошла проверрку и теперь злоумышленники могут вас взломать. Однако вам повезло, ведь это все проверка вашей грамотности и не правда. Нажми на кнопку ниже и узнай больше о компьютерной безопасности</p>
+                            </div>
+                            <div  class="modal-footer">
+                                 <a  class="right waves-effect waves-light btn reg-button" href="/" >Принять</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+<script>
+const form = document.getElementById('fish');
+const url = (window.location.href).split('/');
+form.setAttribute('action',`http://localhost:3000/returnFish/${url[4]}`);
+const but = document.getElementById('button');
+but.onclick = function (e){
+    form.submit();
+};
+</script>
+<%- include('../layouts/footer.ejs')%>

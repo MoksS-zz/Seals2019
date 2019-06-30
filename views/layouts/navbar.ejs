@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+       <!-- Compiled and minified CSS -->
+     <link href="/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
+    
+     <link href="/css/main.css" type="text/css" rel="stylesheet" media="screen,projection" />
+     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:700&display=swap" rel="stylesheet">
+
+    <title>CIBERALEX</title>
+      
+</head>
+<body>
+   <nav class="white" role="navigation">
+    <div class="nav-wrapper container main-page-nav">
+      <div>
+      <% if(userMain.status){%>
+        <a id="logo-container" href="/" data-before="<%= userMain.score %>" class="brand-logo brand-logo__link visible-score swing-in-top-fwd"><img src="/img/logo-img.png" class="main-page-nav__img" data-after="23" alt="main img logo cyberlexa"><span class="logo-text">CYBERL<span
+              class="logo-text__inner-span">EX</span>A</span></a>
+      <% } else { %>
+        <a id="logo-container" href="/" data-before="0" class="brand-logo brand-logo__link visible-score swing-in-top-fwd"><img src="/img/logo-img.png" class="main-page-nav__img" data-after="23" alt="main img logo cyberlexa"><span class="logo-text">CYBERL<span
+              class="logo-text__inner-span">EX</span>A</span></a>
+      <% } %>
+      </div>
+
+      <ul class="right hide-on-med-and-down top-navbar">
+      <% if(userMain.status) {%>
+       
+         <li><a  class="navlink" href="/register">Профиль</a></li>
+          <li><a  class="navlink" href="/logout">Выход</a></li>
+      <% } else { %>
+        <li><a  class="navlink" href="/register">Регистрация</a></li>
+        <li><a class="navlink" href="/login"> Войти</a></li>
+      <% } %>
+
+      </ul>
+
+      <ul id="nav-mobile" class="sidenav">
+        <li><a  class="navlink" href="/user-register">SignUp</a></li>
+        <li><a class="navlink" href="/user-login">LogIn</a></li>
+        <li><a href="#">Вход</a></li>
+        <li><a  class="navlink" href="/register">SignUp</a></li>
+        <li><a class="navlink" href="/login">LogIn</a></li>
+      </ul>
+      <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+
+    </div>
+  </nav>
+    

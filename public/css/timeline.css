@@ -1,0 +1,121 @@
+body {
+  /* font-family: $font-sans; */
+  /*   margin: 0;
+  padding: 0 4em; */
+}
+
+.menu-timeline {
+  --font-sans: 'Open Sans', sans-serif;
+  min-width: 300px;
+  max-width: 500px;
+  margin: auto;
+  font-family: var(--font-sans);
+  margin: auto;
+  padding: 0 4em;
+}
+
+.menu-timeline__paragraph {
+  font-size: 1em;
+  line-height: 1.75em;
+  border-top: 3px solid;
+  border-image: linear-gradient(to right, #743ad5 0%, #d53a9d 100%);
+  border-image-slice: 1;
+  border-width: 3px;
+  margin: 0;
+  padding: 40px;
+  counter-increment: section;
+  position: relative;
+  color: var(--black);
+}
+
+/*umbers */
+.menu-timeline__paragraph:before {
+  --black: #34435E;
+  --white: #ffffff;
+  top: 40%;
+  content: counter(section);
+  position: absolute;
+  border-radius: 50%;
+  padding: 10px;
+  height: 2.25em;
+  width: 2.25em;
+  background-color: var(--black);
+  text-align: center;
+  line-height: 0.75em;
+  color: var(--white);
+  font-size: 1em;
+}
+
+/*odd number borders*/
+.menu-timeline__paragraph:nth-child(odd) {
+  border-right: 3px solid;
+  padding-left: 0;
+
+
+}
+
+.menu-timeline__paragraph:nth-child(odd):before {
+  left: 100%;
+  margin-left: -15px;
+}
+
+
+/* even number borders */
+.menu-timeline__paragraph:nth-child(even) {
+  border-left: 3px solid;
+  padding-right: 0;
+}
+
+.menu-timeline__paragraph:nth-child(even):before {
+  right: 100%;
+  margin-right: -15px;
+}
+
+
+/* handle first and last */
+.menu-timeline__paragraph:first-child {
+  border-top: 0;
+  border-top-right-radius: 0;
+  border-top-left-radius: 0;
+}
+
+.menu-timeline__paragraph:last-child {
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.menu-timeline__paragraph img {
+  width: 70px;
+}
+
+.menu-timeline__paragraph p {
+  align-self: center;
+}
+
+.menu-timeline__inner-container {
+  display: flex;
+}
+
+.menu-timeline__paragraph .menu-timeline__inner-container {
+  justify-content: flex-end;
+}
+
+.menu-timeline__paragraph:nth-child(odd) .menu-timeline__inner-container {
+  justify-content: flex-end;
+}
+
+.menu-timeline__paragraph:nth-child(even) .menu-timeline__inner-container {
+
+  flex-direction: row-reverse;
+}
+
+.menu-timeline__paragraph.not-active {
+  filter: grayscale(100%);
+}
+
+.menu-timeline__paragraph.active:hover {
+  cursor: pointer;
+  background-color: #34435E;
+  background-origin: content-box;
+  color: white;
+}

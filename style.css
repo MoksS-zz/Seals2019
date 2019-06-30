@@ -1,0 +1,60 @@
+/*--------------------------------------------------------------------------*/
+/*--------------------- passChecker page content ---------------------------*/а
+
+ input {
+	border: 100px solid #3188b1;
+	width: 200px;
+    padding: 2px;
+    outline:0;
+}
+input :focus{
+    border: 10px solid cornflowerblue;
+}
+_info {
+	background-color: #f3f7f8;
+	border: 1px solid #bfced1;
+	margin: 20px 10px 0 10px;
+	padding: 20px;
+}
+_info:after,
+_info:before {
+	position: absolute;
+	height: 0;
+	width: 0;
+	bottom: 100%;
+	left: 65px;
+	border: solid transparent;
+	content: " ";
+}
+_info:after {
+	border-bottom-color: #f3f7f8;
+	border-width: 10px;
+	margin-left: -10px;
+}
+_info:before {
+	border-bottom-color: #bfced1;
+	border-width: 11px;
+	margin-left: -11px;
+}
+_info > div {
+	margin-bottom: 15px;
+}
+_info__time {
+	color: #c60000;
+}
+_info__reason,
+#resStr {
+	font-size: 1.5em;
+	font-weight: normal;
+}
+_info__reason__unreliable {
+	color: #c60000;
+}
+_info__reason__reliable {
+	color: #00c600;
+}
+/*--------------------- passChecker page content ---------------------------*/
+/*--------------------------------------------------------------------------*/
+
+/*----------------------------------------------------------------------*/
+/*--------------------- guesser page content ---------------------------*/

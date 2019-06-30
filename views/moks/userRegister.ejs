@@ -1,0 +1,21 @@
+
+<%- include('../layouts/navbar.ejs')%>
+
+<div class="container fishingform">
+    <h3 class="title center"> Регистрация </h3>
+    <% if (msg) { %>
+    <h2><%= msg %></h2>
+    <% } %>
+
+    <form id="register" action="/register" method="POST" enctype="multipart/form-data" > 
+        <input placeholder="name" name="name"/><br>
+        <input type="password" placeholder="password" name="password"/><br><br>
+        <input name="avatar" type="file" accept='image/png, image/jpeg'><br><br>
+        <input type="email" name="email"  placeholder="Email"><br>
+        <input type="number" name="phone" placeholder="Phone number">
+        <a class="right waves-effect waves-light btn reg-button" href="javascript:{}" onclick="document.getElementById('register').submit();">Принять</a>
+    </form> 
+  
+           
+</div>
+<%- include('../layouts/footer.ejs')%>

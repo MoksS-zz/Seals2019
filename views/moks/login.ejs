@@ -1,0 +1,11 @@
+<%- include('../layouts/navbar.ejs')%>
+<div class="container fishingform">
+  <h3 class="title center" > Войти </h3>
+ 
+  <form id="login" action="/login" method="POST"  > 
+      <input placeholder="name" name="name"/> 
+      <input type="password" placeholder="password" name="password"/><br><br>
+       <a class="right waves-effect waves-light btn reg-button"  onclick="document.getElementById('login').submit();">Принять</a>
+  </form>  
+</div>
+<%- include('../layouts/footer.ejs')%>

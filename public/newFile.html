@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!-- Compiled and minified CSS -->
+  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
+
+  <link href="css/main.css" type="text/css" rel="stylesheet" media="screen,projection" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:700&display=swap" rel="stylesheet">
+  <title>Document</title>
+</head>
+
+<body>
+  <section class="container password-section">
+    <h5 class="password-section__subtitle"> Какие пароли самые тупые на свете? </h5>
+
+    <p class="password-section__main-text"> Вот великолепная пятерка: <strong> 123456, password, 12345, 12345678, qwerty </strong>. Если вы обнаружили в этом списке пароль от своей почты или интернет-банка, поменяйте его прямо сейчас на
+      какой-то
+      другой (но не из списка!), и
+      возвращайтесь к
+      чтению карточек.</p>
+    <img class="password-section__leha-img-icon slide-in-left" src="img/Leha_lazy_icon.png" alt="leha lazy icon">
+
+    <h5 class="password-section__subtitle">Почему эти пароли такие уж тупые?</h5>
+
+    <p class="password-section__main-text"> Потому что эти пароли — <strong></strong>самые популярные</strong> в мире. Аккаунты с такими паролями взламываются перебором комбинаций — для этого есть специальные программы. Собственно,
+      перебором взламываются не только
+      эти пароли, но эти сломать проще всего.</p>
+
+
+    <h5 class="password-section__subtitle">Что за перебор?</h5>
+
+    <p class="password-section__main-text">Перебор — это система, позволяющая по порядку перебрать множество вариантов возможного пароля. Допустим, вы используете в пароле 5 цифр. Это всего 100 тысяч комбинаций. Компьютер справится с такой
+      задачей раньше, чем вы успеете дочитать этот материал. Хорошие почтовые сервисы обычно не позволяют бесконечно вводить неправильные пароли, но такая система есть не везде.</p>
+
+    <h5 class="password-section__subtitle">А если 10 цифр?</h5>
+
+    <p class="password-section__main-text">Все равно это плохой пароль. У мошенника (вернее, у компьютера) уйдет на него несколько часов. Чем больше цифр, тем больше времени он потратит, но все-таки пароль лучше составлять похитрее.</p>
+
+
+
+
+
+
+    <div class="row card">
+      <form class="col s12 form-password-cheching ">
+        <div class="row">
+          <div class="input-field col s12">
+            <input oninput="passChecker.check(this.value)" type="password" class="input-pass-text validate input-text" value="" placeholder="введите пароль для проверки на надежность">
+
+            <!-- <label for="email">Введите пароль</label> -->
+            <div id="passResult" class="card-panel password-check-result  blue-grey lighten-5">
+              <p>компьютеру нужно примерно:</p>
+              <h3 class="pass-checker_info__time" id="resStr"></h3>
+              <p>чтобы взломать ваш пароль</p>
+              <p id="check-reason"></p>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+
+
+    <h5 class="password-section__subtitle">Редкое слово в качестве пароля годится?</h5>
+
+    <p class="password-section__main-text">Нет, совсем не годится. Взломщик для перебора может использовать самые разные словари. Система в конце концов найдет подходящее слово.</p>
+
+
+    <h5 class="password-section__subtitle">А если редкое слово и цифры?</h5>
+
+    <p class="password-section__main-text">Такой пароль сложнее подобрать, но все-таки можно. Современные системы полного перебора (bruteforce) позволяют искать не только цифры и слова, но и словосочетания и сочетания слов и цифр.</p>
+
+    <h5 class="password-section__subtitle">Так какой же пароль самый лучший?</h5>
+
+    <p class="password-section__main-text">В этом пароле должно быть много символов — хотя бы десяток. Это должны быть разные символы — цифры, большие и маленькие буквы, знаки препинания. Сочетания букв не должны образовывать слова, даже
+      если это <b>k0роvA.</b></p>
+
+    <h5 class="password-section__subtitle"><b>ЕKkjdf3en!@#e3els?</b> И как же такой пароль запомнить?</h5>
+
+    <p class="password-section__main-text">Никак. Не надо его запоминать. Есть такие сервисы — менеджеры паролей. Они сами генерируют надежные пароли и их хранят. Таких сервисов довольно много — одни работают в онлайне и в приложениях,
+      другие устанавливаются в память компьютера.</p>
+
+    <h5 class="password-section__subtitle">Для такого менеджера тоже нужен пароль?</h5>
+
+    <p class="password-section__main-text">Да. Это называется «мастер-пароль». И вот его придется запомнить.</p>
+    <img class="password-section__leha-img-icon" src="img/Leha_mail_icon.png" alt="leha mail icon">
+
+
+    <h5 class="password-section__subtitle">Как придумать надежный мастер-пароль и запомнить его?</h5>
+
+    <p class="password-section__main-text">Можно использовать в качестве пароля какую-нибудь длинную фразу. Легко запомнить что-нибудь вроде «To be, or not to be, that is the question», но цитаты лучше не использовать — подберут. Хороший
+      вариант — <b>автогенерируемые стихи</b>. Такие поэтические сервисы есть в интернете. А можно вспомнить какую-то фразу из семейного фольклора и записать ее латиницей. Кстати, некоторые сервисы советуют в качестве хорошего пароля
+      использовать русские слова, записанные на английской раскладке и наоборот — но на самом деле это не помогает. С длинными паролями одна беда — в некоторых системах есть ограничение на количество символов.</p>
+
+    <h5 class="password-section__subtitle">А нельзя использовать этот стихотворный пароль во всех аккаунтах?</h5>
+
+    <p class="password-section__main-text">Нет, нельзя. Если вдруг взломают один, взломают и все остальные. Есть такое правило: «Один аккаунт — один пароль».</p>
+
+    <h5 class="password-section__subtitle">А если менеджер паролей взломают хакеры?</h5>
+
+    <p class="password-section__main-text">Система защиты менеджеров паролей устроена таким образом, что при массовой утечке ничего страшного не происходит — во всяком случае, если у вас достаточно хитрый пароль. И все же если произошла
+      хакерская атака, менеджеры просят сменить пароль — просто на всякий случай.</p>
+
+
+  </section>
+
+
+
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js "></script>
+  <script src="js/materialize.min.js "></script>
+  <script src="js/init.js"></script>
+  <script src="js/paasChecker.js"></script>
+</body>
+
+</html>

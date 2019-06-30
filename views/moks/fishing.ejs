@@ -1,0 +1,32 @@
+<%- include('../layouts/navbar.ejs')%>
+
+<div id="maindiv" class="container fishingform">
+    <h3 class="title"> Поймай своего друга! </h3>
+    <form id="friend-fish" action="/friendFish" method="POST"> 
+        <input placeholder="Имя друга" name="name"/> 
+        <input placeholder="Фамилия друга" name="surname"/><br><br>
+        <input  placeholder="Хобби" name="hobby"/><br><br> 
+        <input placeholder="Email address"  name="email"/> <br> <br>
+
+         <a id="button" class="right waves-effect waves-light btn reg-button">Принять</a>
+    <form>  
+</div>
+<script >
+    let div = document.getElementById('maindiv')
+    const form = document.getElementById('friend-fish');
+    let button = document.getElementById('button');
+    let p = document.createElement('p');
+    p.style.border = '5px solid #81D670';
+    p.style.padding = '10px';
+    p.style.maxWidth = '200px';
+    p.textContent = 'Сообщение отправлено';
+    button.onclick = function (e){
+        const form = document.getElementById('friend-fish');
+        div.append(p)
+        form.submit();
+    };
+    
+</script>
+
+
+<%- include('../layouts/footer.ejs')%>
