@@ -35,31 +35,11 @@ function checkFileType(req,file, cb) {
     };
 };
 
-//authentication  function
-async function isLoggedIn (req) {
-    const result = {};
-    try {
-        let user = await UserM.findOne({
-            where: { cookie : req.cookies.seals},
-            attributes:['name','avatar','id','email','phone','link','score']
-        });
-        result.name = user.name;
-        result.avatar = user.avatar;
-        result.id = user.id;
-        result.status = true;
-        result.email = user.email;
-        result.phone = user.phone;
-        result.link = user.link;
-        result.score = user.score;
-    } catch (error) {
-        result.status = false;
-    }
-    return result;
-};
 
 
 exports.getReginster = async (req, res) => {
-    const userMain = await isLoggedIn(req);
+    const userMain =  req.locals;
+
     if(userMain.status){
         res.redirect('/ciberlexa');
     };
@@ -70,7 +50,7 @@ exports.getReginster = async (req, res) => {
 }
 
 exports.getMainPage = async (req, res) => {
-    const userMain = await isLoggedIn(req);
+    const userMain =  req.locals;
     res.render('moks/landing', {
         userMain,
         msg: null
@@ -78,7 +58,7 @@ exports.getMainPage = async (req, res) => {
 };
 
 exports.getLogin = async (req,res) => {
-    const userMain =await isLoggedIn(req);
+    const userMain = req.locals;
     res.render('moks/login',{
         userMain,
         msg: null
@@ -86,7 +66,7 @@ exports.getLogin = async (req,res) => {
 };
 
 exports.postRegister = async (req, res) => {
-    const userMain = await isLoggedIn(req);
+    const userMain =  req.locals;
     upload(req, res, (err) => {
         if(err){
           res.render('moks/userRegister', {
@@ -169,8 +149,7 @@ exports.postRegister = async (req, res) => {
 };
 
 exports.postLogin = async (req , res) => {
-    let userMain = await isLoggedIn(req);
-    console.log(req.body)
+    let userMain =  req.locals;
     const hash = crypto.createHmac('sha256', 'SEALS')
                    .update(req.body.password)
                    .digest('hex');

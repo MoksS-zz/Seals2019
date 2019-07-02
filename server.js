@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const testRouter = require('./routers/userRouter');
 const gameRouter = require('./routers/gameRouter');
+const handler = require('./controllers/handlerauthentication');
 
 
 app.set('view engine', 'ejs');
@@ -12,6 +13,7 @@ app.set('views', 'views');
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({extended:true}));
+app.use(handler);
 
 app.use(testRouter);
 app.use(gameRouter);

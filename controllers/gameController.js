@@ -11,13 +11,13 @@ const transporter = nodemailer.createTransport(sendgridTransport({
 }));
 
 exports.getFishingPageLesson = async (req, res) => {
-   const userMain = await isLoggedIn(req);
+   const userMain = req.locals;
     res.render('./moks/fishingLesson',{
        userMain
     });
 }
 exports.getFishing = async(req, res) => {
-    const userMain = await isLoggedIn(req);
+    const userMain = req.locals;
     if(userMain.status){
        res.render('./moks/fishing',{
        userMain
@@ -29,7 +29,7 @@ exports.getFishing = async(req, res) => {
 };
 
 exports.postFish = async ( req, res) =>{
-    const user = await isLoggedIn(req);
+    const user = req.locals;
     if(!user) res.redirect('/');
     const link = `http://localhost:3000/friend/${uuid()}`;
 
@@ -289,7 +289,7 @@ exports.postFish = async ( req, res) =>{
 }
 
 exports.getFishPage = async (req,res) => {
-    const userMain = await isLoggedIn(req);
+    const userMain = req.locals;
     let score = 0;
     const link = `http://localhost:3000/friend/${req.params.link}`
     console.log('ссылка по котороый перешли       ' + req.params.link);
@@ -315,7 +315,7 @@ exports.getFishPage = async (req,res) => {
 };
 
 exports.getPasswordLesson =  async  (req,res) => {
-   let userMain = await isLoggedIn(req);
+   let userMain = req.locals;
    res.render('./moks/password-lesson',{
       userMain
    });
@@ -326,35 +326,14 @@ exports.getAcceptFishing = (req, res) => {
 }
 
 exports.getMenu = async  (req,res) => {
-   let userMain = await isLoggedIn(req);
+   let userMain = req.locals;
    res.render('./moks/index',{
       userMain
    })
 }
-//authentication  function
-async function isLoggedIn (req) {
-    const result = {};
-    try {
-        let user = await UserM.findOne({
-            where: { cookie : req.cookies.seals},
-            attributes:['name','avatar','id','email','phone','link','score']
-        });
-        result.name = user.name;
-        result.avatar = user.avatar;
-        result.id = user.id;
-        result.email = user.email;
-        result.link = user.link;
-        result.phone = user.phone;
-        result.score = user.score;
-        result.status = true;
-    } catch (error) {
-        result.status = false;
-    }
-    return result;
-}; 
 
 exports.returnFish = async (req, res) => {
-   const userMain = await isLoggedIn(req);
+   const userMain = req.locals;
    console.log(`returnFish link -----> ${req.params.link }`);
 
    try {
