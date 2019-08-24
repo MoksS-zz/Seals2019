@@ -18,7 +18,7 @@ let storage = multer.diskStorage({
     }
 });
 
-const upload = multer({
+exports.upload = multer({
     storage:storage,
     fileFilter: checkFileType
 }).single('avatar');
@@ -65,87 +65,88 @@ exports.getLogin = async (req,res) => {
     });
 };
 
+
 exports.postRegister = async (req, res) => {
     const userMain =  req.locals;
-    upload(req, res, (err) => {
-        if(err){
-          res.render('moks/userRegister', {
+    
+    const file = req.file
+    if (!file) {
+        const error = new Error('Please upload a file')
+        res.render('moks/login',{
             userMain,
-            msg: err
-          });
-        } else {
-            const hash = crypto.createHmac('sha256', 'SEALS')
-                   .update(req.body.password)
-                   .digest('hex');
+            msg: error
+        });
+    }
 
-            const cookie = crypto.createHmac('sha256', 'SEALS')
-            .update(uuid())
+    const hash = crypto.createHmac('sha256', 'SEALS')
+            .update(req.body.password)
             .digest('hex');
 
-            console.log('MOKS this is a new user: ' + req.body.name + ' ' + req.body.avatar + " " + hash + ' ' + req.body.email);
-            
-            UserM.sync({force: true}).then(() => {
-                // Table created
-                UserM.create({
-                    name:req.body.name,
-                    password:hash,
-                    avatar:req.body.avatar,
-                    email:req.body.email,
-                    phone:req.body.phone + '',
-                    cookie:cookie
-                })
-                .then(user => {
-                    console.log(`MOKS this is a new user: 
-                    NAME: ${user.name} 
-                    AVATAR: ${user.avatar}
-                    PASSWORD: ${hash}
-                    EMAIL: ${user.email}
-                    phone: ${user.phone}
-                    link: ${user.link}
-                    score:${user.score}`);
+    const cookie = crypto.createHmac('sha256', 'SEALS')
+    .update(uuid())
+    .digest('hex');
+
+    console.log('MOKS this is a new user: ' + req.body.name + ' ' + req.body.avatar + " " + hash + ' ' + req.body.email);
     
-                    res.cookie('seals',cookie, { maxAge:86400000, httpOnly: true });
-                    res.redirect('/ciberlexa');
-                })
-                .catch(err =>{
-                    res.render('moks/userRegister', {
-                        userMain,
-                        msg: err
-                      });
-                    console.log(err);
+    UserM.sync({force: true}).then(() => {
+        // Table created
+        UserM.create({
+            name:req.body.name,
+            password:hash,
+            avatar:req.body.avatar,
+            email:req.body.email,
+            phone:req.body.phone + '',
+            cookie:cookie
+        })
+        .then(user => {
+            console.log(`MOKS this is a new user: 
+            NAME: ${user.name} 
+            AVATAR: ${user.avatar}
+            PASSWORD: ${hash}
+            EMAIL: ${user.email}
+            phone: ${user.phone}
+            link: ${user.link}
+            score:${user.score}`);
+
+            res.cookie('seals',cookie, { maxAge:86400000, httpOnly: true });
+            res.redirect('/ciberlexa');
+        })
+        .catch(err =>{
+            res.render('moks/userRegister', {
+                userMain,
+                msg: err
                 });
-              });
-
-
-            // UserM.create({
-            //         name:req.body.name,
-            //         password:hash,
-            //         avatar:req.body.avatar,
-            //         email:req.body.email,
-            //         phone:req.body.phone + '',
-            //         cookie:cookie
-            //     })
-            //     .then(user => {
-            //         console.log(`MOKS this is a new user: 
-            //         NAME: ${user.name} 
-            //         AVATAR: ${user.avatar}
-            //         PASSWORD: ${hash}
-            //         EMAIL: ${user.email}
-            //         phone: ${user.phone}`);
-    
-            //         res.cookie('seals',cookie, { maxAge:86400000, httpOnly: true });
-            //         res.status(201).send('ok');
-            //     })
-            //     .catch(err =>{
-            //         res.render('moks/moks', {
-            //             msg: err
-            //           });
-            //         console.log(err);
-            //     });
-        
-        }
-    
+            console.log(err);
+        });
     });
+
+
+    // UserM.create({
+    //         name:req.body.name,
+    //         password:hash,
+    //         avatar:req.body.avatar,
+    //         email:req.body.email,
+    //         phone:req.body.phone + '',
+    //         cookie:cookie
+    //     })
+    //     .then(user => {
+    //         console.log(`MOKS this is a new user: 
+    //         NAME: ${user.name} 
+    //         AVATAR: ${user.avatar}
+    //         PASSWORD: ${hash}
+    //         EMAIL: ${user.email}
+    //         phone: ${user.phone}`);
+
+    //         res.cookie('seals',cookie, { maxAge:86400000, httpOnly: true });
+    //         res.status(201).send('ok');
+    //     })
+    //     .catch(err =>{
+    //         res.render('moks/moks', {
+    //             msg: err
+    //           });
+    //         console.log(err);
+    //     });
+        
 };
 
 exports.postLogin = async (req , res) => {
