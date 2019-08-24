@@ -6,8 +6,6 @@ const uuid = require('uuidv4');
 
 
 
-// this is my(MOKS) JOB
-
 //seting for multer 
 
 let storage = multer.diskStorage({
